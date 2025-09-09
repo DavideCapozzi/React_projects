@@ -1,3 +1,25 @@
-.Button div{
-    background-color: darkgray;
+.circle-container {
+    background-color: #282c34;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;  
+}
+
+.Button {
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #61dafb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.Button-red {
+    background-color: #ff6347; /* Un bel rosso aranciato */
 }
