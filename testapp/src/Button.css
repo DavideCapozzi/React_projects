@@ -24,3 +24,41 @@
 .Button-red {
     background-color: #ff6347; /* Un bel rosso aranciato */
 }
+
+.circle-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.Button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #95a5a6;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.Button-active {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.Button:nth-child(1).Button-active {
+  background-color: #e74c3c;
+}
+
+.Button:nth-child(2).Button-active {
+  background-color: #2ecc71;
+}
+
+.Button:nth-child(3).Button-active {
+  background-color: #3498db;
+}
