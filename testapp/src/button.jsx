@@ -3,18 +3,23 @@ import { useState } from "react";
 import "./Button.css";
 
 function Button() {
-    const [isGray, setIsGray] = useState(true);
+    const [isGrayList, setIsGrayList] = useState([true, true, true]);
 
-    const handleClick = () => {
-        setIsGray(!isGray);
+    const handleClick = (index) => {
+        setIsGrayList((prev) => prev.map((val, i) => (i === index ? !val : val)));
     };
 
     return (
         <div className="circle-container">
-            <div className={`Button ${isGray ? '' : 'Button-red'}`} 
-                onClick={handleClick} >
-                Click me 
-            </div>
+            {[0, 1, 2].map((idx) => (
+                <div
+                    key={idx}
+                    className={`Button ${isGrayList[idx] ? '' : 'Button-red'}`}
+                    onClick={() => handleClick(idx)}
+                >
+                    Click {idx + 1}
+                </div>
+            ))}
         </div>
     );
 }
