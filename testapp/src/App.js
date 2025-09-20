@@ -1,24 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
-import Navbar from './navbar';
-import Button from './button';
+import Navbar from './components/Navbar/Navbar';
+import Button from './components/Button/Button';
 import CalendarHistory from './components/CalendarHistory';
 import CalendarView from './components/CalendarView';
 import useStorage from './hooks/useStorage';
+import getLocalDateString from './utils/getLocalDateString';
 import { useEffect, useState } from 'react';
 
 function App() {
   const [clickHistory, setClickHistory] = useStorage('buttonClickHistory', {});
   const [activeButtons, setActiveButtons] = useState({});
-
-  const getLocalDateString = () => {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = now.getMonth() + 1;
-    const day = now.getDate();
-    return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
-};
-
 
   // Effetto per inizializzare gli stati dei bottoni basati sullo storage
   useEffect(() => {
