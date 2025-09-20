@@ -2,8 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Button from './components/Button/Button';
-import CalendarHistory from './components/CalendarHistory';
-import CalendarView from './components/CalendarView';
+import CalendarView from './components/CalendarView/CalendarView';
 import useStorage from './hooks/useStorage';
 import getLocalDateString from './utils/getLocalDateString';
 import { useEffect, useState } from 'react';
@@ -80,7 +79,6 @@ function App() {
             Cancella Cronologia
           </button>
           
-          <CalendarHistory events={clickHistory} />
           <CalendarView events={clickHistory} />
         </div>
       )}

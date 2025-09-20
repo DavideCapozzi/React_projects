@@ -1,5 +1,6 @@
 import React from 'react';
-import getLocalDateString from '../utils/getLocalDateString';
+import getLocalDateString from '../../utils/getLocalDateString';
+import './CalendarView.css';
 
 const CalendarView = ({ events }) => {
   // events è un oggetto: { [date]: [buttonIds] }
@@ -24,10 +25,9 @@ const CalendarView = ({ events }) => {
   
   return (
     <div className="calendar-view">
-      <h2>Visualizzazione Calendario</h2>
       <div className="calendar">
         <div className="calendar-header">
-          <h3>{firstDay.toLocaleDateString('it-IT', { month: 'long', year: 'numeric' })}</h3>
+          <h3 class="capitalize-text">{firstDay.toLocaleDateString('it-IT', { month: 'long', year: 'numeric' })}</h3>
         </div>
         <div className="weekdays">
           {['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'].map(day => (
