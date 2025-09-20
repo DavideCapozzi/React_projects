@@ -1,31 +1,17 @@
 import React from "react";
-import { useState } from "react";
 import "./Button.css";
 
-function Button({ onButtonClick }) {
-    const [activeButtons, setActiveButtons] = useState([]);
-
+function Button({ onButtonClick, activeButtons }) {
     const handleClick = (index) => {
         const buttonId = `btn${index + 1}`;
-        
-        // Toggle del bottone
-        if (activeButtons.includes(buttonId)) {
-            setActiveButtons(activeButtons.filter(btn => btn !== buttonId));
-        } else {
-            setActiveButtons([...activeButtons, buttonId]);
-        }
-        
-        // Notifica al componente genitore
-        if (onButtonClick) {
-            onButtonClick(buttonId);
-        }
+        onButtonClick(buttonId);
     };
 
     return (
         <div className="circle-container">
             {[0, 1, 2].map((idx) => {
                 const buttonId = `btn${idx + 1}`;
-                const isActive = activeButtons.includes(buttonId);
+                const isActive = activeButtons[buttonId] || false;
                 
                 return (
                     <div

@@ -5,18 +5,48 @@ import Button from './button';
 import CalendarHistory from './components/CalendarHistory';
 import CalendarView from './components/CalendarView';
 import useStorage from './hooks/useStorage';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [clickHistory, setClickHistory] = useStorage('buttonClickHistory', {});
+  const [activeButtons, setActiveButtons] = useState({});
+
+  const getLocalDateString = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+    const day = now.getDate();
+    return `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+};
+
+
+  // Effetto per inizializzare gli stati dei bottoni basati sullo storage
+  useEffect(() => {
+    const today = getLocalDateString();
+    const todayButtons = clickHistory[today] || [];
+    
+    // Crea un oggetto con lo stato di ogni bottone per oggi
+    const initialActiveState = {
+      btn1: todayButtons.includes('btn1'),
+      btn2: todayButtons.includes('btn2'),
+      btn3: todayButtons.includes('btn3')
+    };
+    
+    setActiveButtons(initialActiveState);
+  }, [clickHistory]);
 
   const handleButtonClick = (buttonId) => {
-    const today = new Date();
-    const dateOnly = today.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+    const today = getLocalDateString();
+    
+    // Aggiorna lo stato attivo del bottone
+    setActiveButtons(prev => ({
+      ...prev,
+      [buttonId]: !prev[buttonId]
+    }));
     
     setClickHistory(prev => {
-      const currentDateData = prev[dateOnly] || [];
+      const currentDateData = prev[today] || [];
       
-      // Toggle: se il bottone è già presente, lo rimuovi, altrimenti lo aggiungi
       let newDateData;
       if (currentDateData.includes(buttonId)) {
         newDateData = currentDateData.filter(id => id !== buttonId);
@@ -26,7 +56,7 @@ function App() {
 
       return {
         ...prev,
-        [dateOnly]: newDateData
+        [today]: newDateData
       };
     });
   };
@@ -34,6 +64,12 @@ function App() {
   const clearHistory = () => {
     if (window.confirm('Sei sicuro di voler cancellare tutta la cronologia?')) {
       setClickHistory({});
+      // Resetta anche gli stati attivi dei bottoni
+      setActiveButtons({
+        btn1: false,
+        btn2: false,
+        btn3: false
+      });
     }
   };
 
@@ -44,7 +80,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
       </header>
       
-      <Button onButtonClick={handleButtonClick} />
+      <Button onButtonClick={handleButtonClick} activeButtons={activeButtons} />
       
       {Object.keys(clickHistory).length > 0 && (
         <div className="calendar-section">

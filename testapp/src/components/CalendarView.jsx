@@ -1,5 +1,12 @@
 import React from 'react';
 
+const getLocalDateString = (date) => {
+  const d = date || new Date();
+  const offset = d.getTimezoneOffset();
+  const localTime = new Date(d.getTime() - (offset * 60 * 1000));
+  return localTime.toISOString().split('T')[0];
+};
+
 const CalendarView = ({ events }) => {
   // events è un oggetto: { [date]: [buttonIds] }
   // Ottieni l'anno e mese corrente
@@ -41,7 +48,7 @@ const CalendarView = ({ events }) => {
           
           {/* Giorni del mese */}
           {daysInMonth.map(day => {
-            const dateStr = day.toISOString().split('T')[0];
+            const dateStr = getLocalDateString(day);
             const buttonsClicked = events[dateStr] || [];
             
             return (
