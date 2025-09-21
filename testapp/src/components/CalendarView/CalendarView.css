@@ -11,7 +11,10 @@
 }
 
 .calendar-header {
-  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .weekdays {
@@ -47,10 +50,66 @@
 }
 
 .day.empty {
-  background-color: #f5f5f5;
+  background-color: #282c34;
   border: none;
 }
 
 .capitalize-text {
   text-transform: capitalize;
+}
+
+.month-nav-button {
+  background: #282c34;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+}
+
+/* Triangolo sinistro per il pulsante "precedente" */
+.month-nav-button.prev::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 12px solid #ffffff;
+  transform: translate(-50%, -50%);
+  transition: border-right-color 0.2s ease;
+}
+
+/* Triangolo destro per il pulsante "successivo" */
+.month-nav-button.next::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid #ffffff;
+  transform: translate(-50%, -50%);
+  transition: border-left-color 0.2s ease;
+}
+
+/* Cambia colore della freccia al hover */
+.month-nav-button:hover.prev::before {
+  border-right-color: #61dafb; /* Colore quando in hover */
+}
+
+.month-nav-button:hover.next::before {
+  border-left-color: #61dafb; /* Colore quando in hover */
+}
+
+/* Evidenziazione del giorno corrente con box-shadow */
+.day.current-day {
+  box-shadow: 0 0 0 2px #61dafb;
+  z-index: 1;
 }
