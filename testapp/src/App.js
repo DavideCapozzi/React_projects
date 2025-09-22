@@ -66,22 +66,23 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
-      <header className="App-header">
+        <Navbar />
+        <header>
+          {Object.keys(clickHistory).length > 0 && (
+          <div className="calendar-section">
+            <CalendarView events={clickHistory} />
+            <br/>
+            <button className="clear-btn" onClick={clearHistory}>
+              Cancella Cronologia
+            </button>
+          </div>
+        )}
+        </header>
+        
+        <Button onButtonClick={handleButtonClick} activeButtons={activeButtons} />
+        
+        
         <img src={logo} className="App-logo" alt="logo" />
-      </header>
-      
-      <Button onButtonClick={handleButtonClick} activeButtons={activeButtons} />
-      
-      {Object.keys(clickHistory).length > 0 && (
-        <div className="calendar-section">
-          <button className="clear-btn" onClick={clearHistory}>
-            Cancella Cronologia
-          </button>
-          
-          <CalendarView events={clickHistory} />
-        </div>
-      )}
     </div>
   );
 }

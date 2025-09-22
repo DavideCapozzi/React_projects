@@ -79,7 +79,7 @@
   height: 0;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
-  border-right: 12px solid #ffffff;
+  border-right: 12px solid #61dafb;
   transform: translate(-50%, -50%);
   transition: border-right-color 0.2s ease;
 }
@@ -94,18 +94,18 @@
   height: 0;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
-  border-left: 12px solid #ffffff;
+  border-left: 12px solid #61dafb;
   transform: translate(-50%, -50%);
   transition: border-left-color 0.2s ease;
 }
 
 /* Cambia colore della freccia al hover */
 .month-nav-button:hover.prev::before {
-  border-right-color: #61dafb; /* Colore quando in hover */
+  border-right-color: #FB61DA; /* Colore quando in hover */
 }
 
 .month-nav-button:hover.next::before {
-  border-left-color: #61dafb; /* Colore quando in hover */
+  border-left-color: #FB61DA; /* Colore quando in hover */
 }
 
 /* Evidenziazione del giorno corrente con box-shadow */
