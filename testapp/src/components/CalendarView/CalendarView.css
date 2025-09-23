@@ -110,6 +110,6 @@
 
 /* Evidenziazione del giorno corrente con box-shadow */
 .day.current-day {
-  box-shadow: 0 0 0 2px #61dafb;
+  box-shadow: 0 0 0 4px #61dafb;
   z-index: 1;
 }
