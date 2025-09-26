@@ -127,3 +127,43 @@
 .button-marker.btn3 {
   background-color: #3498db;
 }
+
+.controls-section {
+  margin: 20px 0;
+  padding: 15px;
+  background: #282c34;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-evenly; 
+}
+
+.backup-btn {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #61dafb;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.backup-btn:hover {
+  background: #f0f0f0;
+  transform: translateY(-1px);
+}
+
+.calendar-section {
+  margin-top: 20px;
+}
+
+.clear-btn {
+  padding: 7px 15px;
+  background: #ffebee;
+  border: 1px solid #f44336;
+  border-radius: 8px;
+  color: #c62828;
+  cursor: pointer;
+}
+
+.clear-btn:hover {
+  background: #ffcdd2;
+}

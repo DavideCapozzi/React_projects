@@ -3,8 +3,8 @@ import { storageService } from '../services/storageService';
 
 const useStorage = (key, initialValue) => {
   const [value, setValue] = useState(() => {
-    const storedValue = storageService.loadData(key);
-    return storedValue !== null ? storedValue : initialValue;
+    const stored = storageService.loadData(key);
+    return stored !== null ? stored : initialValue;
   });
 
   useEffect(() => {
