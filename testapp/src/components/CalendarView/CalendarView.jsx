@@ -4,6 +4,11 @@ import './CalendarView.css';
 
 const CalendarView = ({ events }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [dayClicked, setDayClicked] = useState(null); 
+
+  const handleDayClick = (strDate) => {
+    return setDayClicked(prev => (prev === strDate? null : strDate));
+  }
   
   // Funzioni per navigazione mesi
   const goToPreviousMonth = () => {
@@ -64,9 +69,10 @@ const CalendarView = ({ events }) => {
             const dateStr = getLocalDateString(day);
             const buttonsClicked = events[dateStr] || [];
             const isToday = dateStr === todayString;
+            const isClicked = dateStr === dayClicked;
             
             return (
-              <div key={dateStr} className={`day ${isToday ? 'current-day' : ''}`}>
+              <div key={dateStr} onClick={() => handleDayClick(dateStr)} className={`day ${isToday ? 'current-day' : ''} ${isClicked? 'day-clicked':''}`} >
                 <span>{day.getDate()}</span>
                 {buttonsClicked.length > 0 && (
                   <div className="button-indicators">

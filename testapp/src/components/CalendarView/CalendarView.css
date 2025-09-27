@@ -47,6 +47,7 @@
   border-radius: 3px;
   background-color: white;
   padding: 5px;
+  cursor: pointer;
 }
 
 .day.empty {
@@ -111,6 +112,9 @@
 /* Evidenziazione del giorno corrente con box-shadow */
 .day.current-day {
   background-color: #61dafb;
+}
+
+.day-clicked {
   box-shadow: 0 0 0 4px #61dafb;
   z-index: 1;
 }
